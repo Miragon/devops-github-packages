@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+group 'io.flowsquad.blog'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        // Der Name kann beliebig gewählt werden
+        // Choose whatever name you like
+        name = "GitHubPackages"
+        // Die URL des Repositories, in dem die Artefakte veröffentlicht wurden
+        // The url of the repository that contains the published artifacts
+        url = "https://maven.pkg.github.com/FlowSquad/devops-github-packages"
+        credentials {
+            // Die Zugangsdaten (weiter unten beschrieben)
+            // The credentials (described in the next section)
+            username = project.findProperty("gpr.user")
+            password = project.findProperty("gpr.key")
+        }
+    }
+}
+
+dependencies {
+    // Die Referenz auf das veröffentlichte Library-Artefakt
+    // The reference to our published library artifact
+    compile "io.flowsquad.blog:devops-github-packages-library:1.0.0"
+}

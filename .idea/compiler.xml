@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="devops-github-packages.main" target="1.8" />
+      <module name="devops-github-packages.test" target="1.8" />
+      <module name="devops-github-packages.untitled.main" target="1.8" />
+      <module name="devops-github-packages.untitled.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

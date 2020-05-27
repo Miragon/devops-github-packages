@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    // Erlaubt das Publishen der Artefakte im Rahmen des Builds
+    // Enables publishing artifacts during build
+    id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+group 'io.flowsquad.blog'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+// Konfiguriert das Publishen
+// Configures the publishing
+publishing {
+    repositories {
+        // Das Ziel-Repository
+        // The target repository
+        maven {
+            // Der Name kann beliebig gewählt werden
+            // Choose whatever name you want
+            name = "GitHubPackages"
+            // Die URL des Repositories, in dem die Artefakte veröffentlicht werden sollen
+            // The url of the repository, where the artifacts will be published
+            url = "https://maven.pkg.github.com/FlowSquad/devops-github-packages"
+            credentials {
+                // Die Zugangsdaten (weiter unten beschrieben)
+                // The credentials (described in the next section)
+                username = project.findProperty("gpr.user")
+                password = project.findProperty("gpr.key")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+            // Behebt den Fehler mit den dynamischen Versionen von Spring Boot
+            // Fixes the error with dynamic versions when using Spring Boot
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+}

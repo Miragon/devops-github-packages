@@ -1,0 +1,4 @@
+rootProject.name = 'devops-github-packages'
+include 'devops-github-packages-main'
+include 'devops-github-packages-library'
+
