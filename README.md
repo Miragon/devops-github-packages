@@ -2,3 +2,4 @@
 
 This repository is part of the blog post series DevOps with GitHub.
 See the full post here: https://medium.com/@flowsquad/devops-with-github-part-1-github-packages-with-gradle-c4253cdf7ca6
+Or see the German translation: https://www.flowsquad.io/blog/2020-05-29-devops-mit-github-teil-1-github-packages-mit-gradle/
